@@ -1,0 +1,39 @@
+﻿@page "/counter"
+
+
+@*Lasiguiente línea se agrega para que se necesite autorización de estar
+autenticado para acceder a esta página y verla*@
+@attribute [Authorize]
+
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+
+<AuthorizeView Roles="Administrador">
+    <Authorized>
+        <button class="btn btn-primary" @onclick="AdminIncrementCount">Incrementar en 20</button>
+    </Authorized>
+    <NotAuthorized>
+        <button class="btn btn-primary" @onclick="IncrementCount">Incrementar en 1</button>
+    </NotAuthorized>
+</AuthorizeView>
+
+
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+    private void AdminIncrementCount()
+    {
+        currentCount += 20;
+    }
+}

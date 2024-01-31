@@ -1,0 +1,26 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+
+<AuthorizeView>
+    <Authorized>
+        <h3>Gracias por acceder</h3>
+    </Authorized>
+    <NotAuthorized>
+        <h2>Porfavor acceda</h2>
+    </NotAuthorized>
+</AuthorizeView>
+
+<AuthorizeView Roles="Administrador">
+    <Authorized>
+        <h3>Gracias ADMIN</h3>
+    </Authorized>
+</AuthorizeView>
+
